@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=Digi;encrypt=true;trustServerCertificate=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+    show-sql: true
+  threads:
+    virtual:
+      enabled: true
+
+springdoc:
+  enable-data-rest: false
