@@ -1,4 +1,4 @@
-package pkce.digiteen3play;
+package digiteen3play;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
