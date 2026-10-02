@@ -26,6 +26,7 @@ public class AccessTokenService {
                         new UsernamePasswordAuthenticationToken(
                                 loginPVM.getEmail(),
                                 loginPVM.getPassword()));
+
         String token = jwtGenerator.generateToken(authentication);
         return new AuthenticationResponsePVM(token);
     }

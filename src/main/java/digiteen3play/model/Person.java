@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
 
 
@@ -28,8 +27,4 @@ public class Person extends AbstractModel{
     @CreationTimestamp
     @Column(name = "joinTime")
     private LocalDateTime joinTime;
-
-    @Column(name = "trace_id", nullable=false, length=64, updatable=false)
-    private String traceId;
-
 }

@@ -32,7 +32,6 @@ public class JwtGenerator {
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return Jwts.builder()
-                .subject(authentication.getName())
                 .claim("email", user.getUsername())
                 .claim("authorities",
                         user.getAuthorities()

@@ -42,7 +42,6 @@ public class PersonPVM {
         person.setRole("USER");
         person.setPersonInfo(personInfo);
         person.setPassword(personPVM.getPassword());
-        person.setTraceId(UUID.randomUUID().toString());
         return person;
     }
 }

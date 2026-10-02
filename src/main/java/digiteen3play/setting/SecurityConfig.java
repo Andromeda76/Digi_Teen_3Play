@@ -48,8 +48,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/authentication",
-                                "/registration"
+                                "/login/authentication",
+                                "/person/registration"
                         ).permitAll()
                         .anyRequest().authenticated());
 
