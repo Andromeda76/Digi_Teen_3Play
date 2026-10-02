@@ -28,6 +28,7 @@ public class CustomUserDetailService implements UserDetailsService {
         return new User(
                 person.getPersonInfo().getEmail(),
                 person.getPassword(),
-                List.of(AuthorityUtils.createAuthorityList("ROLE_USER").toArray(new GrantedAuthority[0])));
+                List.of(AuthorityUtils.createAuthorityList("ROLE_USER")
+                        .toArray(new GrantedAuthority[0])));
     }
 }

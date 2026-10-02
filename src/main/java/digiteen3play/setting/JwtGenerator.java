@@ -1,10 +1,13 @@
 package digiteen3play.setting;
 
 
+import digiteen3play.model.Person;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -27,8 +30,15 @@ public class JwtGenerator {
     }
 
     public String generateToken(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
         return Jwts.builder()
                 .subject(authentication.getName())
+                .claim("email", user.getUsername())
+                .claim("authorities",
+                        user.getAuthorities()
+                                .stream()
+                                .map(GrantedAuthority::getAuthority)
+                                .toList())
                 .issuedAt(new Date())
                 .expiration(Date.from(Instant.now().plus(30, ChronoUnit.MINUTES)))
                 .signWith(signingKey, Jwts.SIG.HS256)
